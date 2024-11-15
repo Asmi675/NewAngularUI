@@ -1,0 +1,63 @@
+/* Adjust card layout */
+.card {
+  width: 100%; /* Set the card width to 100% of its parent column */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out; /* Add transition for hover effect */
+}
+
+.card:hover {
+  transform: scale(1.05); /* Slightly enlarge the card on hover */
+}
+
+/* Card image size */
+.card-img-top {
+  max-height: 180px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Card body padding */
+.card-body {
+  padding: 15px;
+}
+
+/* Title style */
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Text (price) styling */
+.card-text {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Button styling */
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #6c63ff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+
+button:hover {
+  background-color: #5a52d4;
+}
+
+/* Star Rating */
+.fas, .far {
+  color: #ffd700;
+  font-size: 18px;
+}
+
+/* Adjust layout for smaller screens */
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 15px; /* Add space between cards on smaller screens */
+  }
+}
