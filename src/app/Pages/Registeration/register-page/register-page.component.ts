@@ -34,26 +34,54 @@ onRegister(){
   }
   this.http.post("https://localhost:7001/api/AuthApi/Register",this.registerObj).subscribe((res:any)=>{
     console.log(res)
-    if(res){
-      alert("Successfully registered")
+    if(res.isSuccessful){
+      if (this.registerObj.role=='user') {
+        this.http.post("https://localhost:5002/api/UserApi",this.registerObj).subscribe((user:any)=>{
+          console.log(user)
+          if (user.result) {
+            alert("Successfully registered User")
+          }
+        })
+      }
+      if (this.registerObj.role=='provider') {
+        this.http.post("https://localhost:7057/api/Services/Register",this.registerObj).subscribe((user:any)=>{
+          console.log(user)
+          if (user.result) {
+            alert("Successfully registered Service Provider")
+          }
+        })
+      }
+      
+      
+      
       window.location.reload()
+      
     }
    else{
     alert("Something went wrong")
    }
   })
+  
 }
 
 onLogin(){
   this.http.post("https://localhost:7001/api/AuthApi/Login",this.loginObj).subscribe((res:any)=>{
+    localStorage.setItem('userName',res.username)
     console.log(res)
-  if(res.role=="user") {
-    this.router.navigateByUrl('user')
+  if (res) {
+    
+    if(res.role=="user") {
+      this.router.navigateByUrl('user')
+      
+    }
+    if (res.role=="provider") {
+      this.router.navigateByUrl('professionals')
+    }
+    if(res.role=="admin"){
+      this.router.navigateByUrl('admin')
+    }
   }
-  if (res.role=="provider") {
-    this.router.navigateByUrl('professionals')
-  }
-  this.router.navigateByUrl('admin')
+  
   })
 }
 

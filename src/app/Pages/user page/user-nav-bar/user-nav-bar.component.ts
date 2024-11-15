@@ -9,5 +9,5 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   styleUrl: './user-nav-bar.component.css'
 })
 export class UserNavBarComponent {
-
+profileName = localStorage.getItem('userName')
 }

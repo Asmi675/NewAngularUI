@@ -11,7 +11,7 @@ export class APIService {
 
   getUsers()
   {
-    return this.http.get("https://localhost:7021/api/UserApi/GetAllUsers");
+    return this.http.get("https://localhost:5002/api/UserApi");
   }
   getProfessionals()
   {

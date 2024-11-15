@@ -34,6 +34,7 @@ http = inject(HttpClient)
     this.http.delete("https://localhost:7057/api/Services/" + id).subscribe((res: any) => {
       
       alert("Professional record successfully Deleted!");
+      window.location.reload()
     })
   }
 }

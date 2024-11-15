@@ -32,9 +32,10 @@ DeleteDetail: any = {
 }
 http = inject(HttpClient)
   onDelete(id:any) {
-    this.http.delete("https://localhost:7021/api/UserApi/" + id).subscribe((res: any) => {
+    this.http.delete("https://localhost:5002/api/UserApi/" + id).subscribe((res: any) => {
       
       alert("User record successfully Deleted!");
+      window.location.reload()
     })
   }
 }
