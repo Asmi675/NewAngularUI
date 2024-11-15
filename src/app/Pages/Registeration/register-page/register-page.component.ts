@@ -47,7 +47,13 @@ onRegister(){
 onLogin(){
   this.http.post("https://localhost:7001/api/AuthApi/Login",this.loginObj).subscribe((res:any)=>{
     console.log(res)
-
+  if(res.role=="user") {
+    this.router.navigateByUrl('user')
+  }
+  if (res.role=="provider") {
+    this.router.navigateByUrl('professionals')
+  }
+  this.router.navigateByUrl('admin')
   })
 }
 
