@@ -76,4 +76,11 @@ domain:string="Plumber"
       }
     })
   }
+  onLogOut(){
+    localStorage.clear()
+  }
+
+  Book(){
+ 
+  }
 }

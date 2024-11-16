@@ -38,14 +38,14 @@
           </a>
           <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdownProfile">
             <li><a class="dropdown-item" routerLink="/profile">Your Account</a></li>
-            <li><a class="dropdown-item" href="#">Booking Status</a></li>
-            <li><a class="dropdown-item" href="#">Logout</a></li>
+            <li><a class="dropdown-item"  routerLink="/status">Booking Status</a></li>
+            <li><a class="dropdown-item" (click)="onLogOut()" href="#">Logout</a></li>
           </ul>
         </li>
 <!-- icon -->
         <li class="nav-item">
           
-          <a class="nav-link" href="#">
+          <a class="nav-link" >
           <i class="fas fa-user-circle"></i>
           </a>
         </li>
@@ -72,27 +72,27 @@
 
 
 
-
 <div class="container mt-4">
   <div class="row">
       <!-- Loop through the services array to create cards dynamically -->
 
       @for (item of data; track $index) {
-      <div class="col-md-6 mb-4">
+      <div class="col-md-6 mb-4 custom1">
           <div class="card h-100">
-              <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="" />
+              <img src="plumber img_2.jpg" class="card-img-top" alt="" />
               <div class="card-body">
-                  <h5 class="card-title">Name:{{item.name}}</h5>
-                  <p class="card-text">Price: {{item.basePay}} <br>Rating: {{item.rating}}</p>
-                 
-                  <!-- <button type="submit" class="btn btn-primary btn-block" (click)="bookNow()">Book Now</button> -->
+                  <h5 class="card-title">Name: {{item.name}}</h5>
+                  <div class="custom-container">
+                    <p class="card-text">Price: {{item.basePay}} <br>Rating: {{item.rating}}</p>
+                  <!-- Button with hover effect -->
+                  <button type="button" class="btn btn-primary btn-block book-now-btn custom-btn" (click)="Book">Book</button>
+                  </div>
               </div>
           </div>
       </div>
       }
 
 
-  </div>
-</div>
+
 
 <router-outlet/>

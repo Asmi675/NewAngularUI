@@ -77,5 +77,7 @@ export class UserProfilePageComponent implements OnInit {
       }
     })
   }
-
+  onLogOut(){
+    localStorage.clear()
+  }
 }

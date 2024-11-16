@@ -17,18 +17,20 @@ import { ProfHomePageComponent } from './Pages/Professionals/prof-home-page/prof
 import { ProfProfilePageComponent } from './Pages/Professionals/prof-profile-page/prof-profile-page.component';
 import { ProfCangeStatusComponent } from './Pages/Professionals/prof-cange-status/prof-cange-status.component';
 import { ProfSummaryComponent } from './Pages/Professionals/prof-summary/prof-summary.component';
+import { BookingStatusComponent } from './Pages/user page/booking-status/booking-status.component';
 
 export const routes: Routes =
     [
-        {path:"",redirectTo:"register",pathMatch:'full'},
+        { path: "", redirectTo: "register", pathMatch: 'full' },
         { path: "register", component: RegisterPageComponent },
-        { path: "nav", component: UserNavBarComponent},
-            { path: 'user', component: UserHomePageComponent},
-            { path: "tutor", component: TutorServicePageComponent },
-            { path: "plumber", component: PlumberServicePageComponent },
-            { path: "electrician", component: ElectricianServicePageComponent },
-            { path: "profile", component: UserProfilePageComponent },
-        
+        { path: "nav", component: UserNavBarComponent },
+        { path: 'user', component: UserHomePageComponent },
+        { path: "tutor", component: TutorServicePageComponent },
+        { path: "plumber", component: PlumberServicePageComponent },
+        { path: "electrician", component: ElectricianServicePageComponent },
+        { path: "profile", component: UserProfilePageComponent },
+        { path : "status" , component: BookingStatusComponent },
+
         {
             path: "admin", component: AdminHomePageComponent,
             children: [
@@ -43,7 +45,7 @@ export const routes: Routes =
                 }
             ]
         },
-        
+
         {
             path: "professionals", component: ProfHomePageComponent,
             children:

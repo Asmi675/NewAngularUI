@@ -77,4 +77,10 @@ domain:string="Electrician"
       }
     })
   }
+  onLogOut(){
+    localStorage.clear()
+  }
+  Book(){
+ 
+  }
 }

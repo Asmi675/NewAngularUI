@@ -122,4 +122,26 @@ cursor: pointer !important; /* Hand cursor for clickable link */
 
 
 
+.book-now-btn {
+  transition: background-color 0.3s, transform 0.2s;
+}
 
+.book-now-btn:hover {
+  background-color: #0056b3; /* Darker shade of blue */
+  transform: scale(1.05); /* Slightly enlarge the button */
+}
+.custom-btn{
+  width: 20%;
+  margin-left: 70%;
+  /* margin-bottom: 20%; */
+  height:28%
+}
+.custom1{
+  width:40% !important;
+  margin-left: 5%;
+}
+
+
+.text1{
+  text-align: center;
+}

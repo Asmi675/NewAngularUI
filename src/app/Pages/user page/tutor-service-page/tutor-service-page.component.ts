@@ -77,4 +77,11 @@ domain:string="Tutor"
       }
     })
   }
+  onLogOut(){
+    localStorage.clear()
+  }
+
+  Book(){
+ 
+  }
 }

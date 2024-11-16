@@ -33,19 +33,19 @@
           </li>
   
           <li ngbDropdown class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdownProfile" ngbDropdownToggle aria-expanded="false">
+            <a class="nav-link dropdown-toggle" routerLink="/profile" id="navbarDropdownProfile" ngbDropdownToggle aria-expanded="false">
               {{ProfileName}}
             </a>
             <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdownProfile">
               <li><a class="dropdown-item" routerLink="/profile">Your Account</a></li>
-              <li><a class="dropdown-item" routerLink="/status">Booking Status</a></li>
+              <li><a class="dropdown-item"  routerLink="/status">Booking Status</a></li>
               <li><a class="dropdown-item" (click)="onLogOut()" href="#">Logout</a></li>
             </ul>
           </li>
   <!-- icon -->
           <li class="nav-item">
             
-            <a class="nav-link" >
+            <a class="nav-link" href="#">
             <i class="fas fa-user-circle"></i>
             </a>
           </li>
@@ -64,36 +64,5 @@
     </div>
   </nav>
 
-
-
-
-
-
-
-
-
-
-<div class="container mt-4">
-    <div class="row">
-        <!-- Loop through the services array to create cards dynamically -->
-
-        @for (item of data; track $index) {
-        <div class="col-md-6 mb-4 custom1">
-            <div class="card h-100">
-                <img src="electrician_sample.JPG" class="card-img-top" alt="" />
-                <div class="card-body">
-                    <h5 class="card-title">Name:{{item.name}}</h5>
-                    <p class="card-text">Price: {{item.basePay}} <br>Rating: {{item.rating}}</p>
-                   
-                <!-- Button with hover effect -->
-                  <button type="button" class="btn btn-primary btn-block book-now-btn custom-btn" (click)="Book">Book</button>
-                  </div>
-            </div>
-        </div>
-        }
-
-
-    </div>
-</div>
-
-<router-outlet/>
+<p>booking-status works!</p>
+<router-outlet></router-outlet>
