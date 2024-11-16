@@ -57,15 +57,16 @@ export class ElectricianServicePageComponent  implements OnInit {
     },
   ];
 
-  
+  ProfileName:any =""
 http = inject(HttpClient)
 data:any[] = []
-domain:string="string"
+domain:string="Electrician"
   constructor() { }
 
   ngOnInit(): void {
     // Fetch services from backend (C# API)
     this.fetchServicesFromBackend();
+    this.ProfileName = localStorage.getItem('userName')
   }
 
   fetchServicesFromBackend() {

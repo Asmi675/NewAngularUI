@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet} from '@angular/router';
 
 
@@ -9,9 +9,11 @@ import { RouterLink, RouterOutlet} from '@angular/router';
   templateUrl: './user-profile-page.component.html',
   styleUrl: './user-profile-page.component.css'
 })
-export class UserProfilePageComponent {
+export class UserProfilePageComponent implements OnInit {
   
-
-
+  ProfileName:any =""
+  ngOnInit(): void {
+    this.ProfileName = localStorage.getItem('userName')
+  }
 
 }

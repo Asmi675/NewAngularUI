@@ -11,9 +11,11 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   styleUrl: './prof-profile-page.component.css'
 })
 export class ProfProfilePageComponent implements OnInit {
+userName:any = ""
   ngOnInit(): void {
-    this.getDetails()
-    console.log(localStorage.getItem('userName'))
+    this.userName = localStorage.getItem('userName')
+    this.getDetails(this.userName)
+    console.log(this.userName)
   }
   updateObj: any = {
     name: "",
@@ -49,8 +51,8 @@ export class ProfProfilePageComponent implements OnInit {
 
   http = inject(HttpClient)
 
-  getDetails() {
-    this.http.get("https://localhost:7057/api/Services/GetProfessionalByUserName/" + localStorage.getItem('userName')).subscribe((res: any) => {
+  getDetails(name: string) {
+    this.http.get("https://localhost:7057/api/Services/GetProfessionalByUserName/" +name ).subscribe((res: any) => {
       console.log(res)
       if(res.isSuccessful){
         this.providerObj=res.result

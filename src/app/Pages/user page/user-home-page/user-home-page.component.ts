@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink} from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
@@ -14,6 +14,10 @@ import { TutorServicePageComponent } from '../tutor-service-page/tutor-service-p
   templateUrl: './user-home-page.component.html',
   styleUrl: './user-home-page.component.css'
 })
-export class UserHomePageComponent {
+export class UserHomePageComponent implements OnInit  {
+   ProfileName:any =""
+  ngOnInit(): void {
+    this.ProfileName = localStorage.getItem('userName')
+  }
 
 }
