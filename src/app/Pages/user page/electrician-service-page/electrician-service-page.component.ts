@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component , OnInit, inject} from '@angular/core';
+import { RouterLink, RouterOutlet} from '@angular/router';
+
 
 @Component({
   selector: 'app-electrician-service-page',
   standalone: true,
-  imports: [],
+  imports: [RouterLink , RouterOutlet ],
   templateUrl: './electrician-service-page.component.html',
   styleUrl: './electrician-service-page.component.css'
 })

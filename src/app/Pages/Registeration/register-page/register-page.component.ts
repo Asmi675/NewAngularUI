@@ -36,6 +36,7 @@ onRegister(){
     console.log(res)
     if(res){
       alert("Successfully registered")
+      // this.router.navigateByUrl("nav")
       window.location.reload()
     }
    else{

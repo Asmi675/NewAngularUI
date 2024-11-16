@@ -20,13 +20,15 @@ import { ProfSummaryComponent } from './Pages/Professionals/prof-summary/prof-su
 
 export const routes: Routes =
     [
-        { path: "nav", component: UserNavBarComponent },
-        { path: "", redirectTo: "user", pathMatch: 'full' },
-        { path: 'user', component: UserHomePageComponent },
-        { path: "tutor", component: TutorServicePageComponent },
-        { path: "plumber", component: PlumberServicePageComponent },
-        { path: "electrician", component: ElectricianServicePageComponent },
-        { path: "profile", component: UserProfilePageComponent },
+        {path:"",redirectTo:"register",pathMatch:'full'},
+        { path: "register", component: RegisterPageComponent },
+        { path: "nav", component: UserNavBarComponent},
+            { path: 'user', component: UserHomePageComponent},
+            { path: "tutor", component: TutorServicePageComponent },
+            { path: "plumber", component: PlumberServicePageComponent },
+            { path: "electrician", component: ElectricianServicePageComponent },
+            { path: "profile", component: UserProfilePageComponent },
+        
         {
             path: "admin", component: AdminHomePageComponent,
             children: [
@@ -41,7 +43,7 @@ export const routes: Routes =
                 }
             ]
         },
-        { path: "register", component: RegisterPageComponent },
+        
         {
             path: "professionals", component: ProfHomePageComponent,
             children:
