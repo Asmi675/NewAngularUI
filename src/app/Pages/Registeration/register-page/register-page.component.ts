@@ -40,6 +40,7 @@ onRegister(){
           console.log(user)
           if (user.result) {
             alert("Successfully registered User")
+            window.location.reload()
           }
         })
       }
@@ -48,13 +49,14 @@ onRegister(){
           console.log(user)
           if (user.result) {
             alert("Successfully registered Service Provider")
+            window.location.reload()
           }
         })
       }
       
       
       
-      window.location.reload()
+      
       
     }
    else{
