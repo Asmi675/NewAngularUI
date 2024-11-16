@@ -33,11 +33,11 @@
         </li>
 
         <li ngbDropdown class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdownProfile" ngbDropdownToggle aria-expanded="false">
+          <a class="nav-link dropdown-toggle"   id="navbarDropdownProfile" ngbDropdownToggle aria-expanded="false">
             {{ProfileName}}
           </a>
           <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdownProfile">
-            <li><a class="dropdown-item" routerLink="profile">Your Account</a></li>
+            <li><a class="dropdown-item" routerLink="/profile">Your Account</a></li>
             <li><a class="dropdown-item" href="#">Booking Status</a></li>
             <li><a class="dropdown-item" (click)="onLogOut()" href="#">Logout</a></li>
           </ul>

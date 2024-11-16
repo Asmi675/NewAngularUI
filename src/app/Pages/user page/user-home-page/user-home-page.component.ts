@@ -10,7 +10,7 @@ import { TutorServicePageComponent } from '../tutor-service-page/tutor-service-p
 @Component({
   selector: 'app-user-home-page',
   standalone: true,
-  imports: [NgbModule , RouterLink,RouterModule ,UserProfilePageComponent,PlumberServicePageComponent,ElectricianServicePageComponent,TutorServicePageComponent],
+  imports: [NgbModule , RouterLink,RouterModule ,UserProfilePageComponent,PlumberServicePageComponent,ElectricianServicePageComponent,TutorServicePageComponent,UserProfilePageComponent],
   templateUrl: './user-home-page.component.html',
   styleUrl: './user-home-page.component.css'
 })
