@@ -47,7 +47,9 @@ onRegister(){
           if (user.result) {
             // alert("Successfully registered User")
             this.toastr.success("Successfully registered as User")
-            window.location.reload()
+            timer(2000).subscribe(() => {
+              window.location.reload()
+            });
           }
         })
       }
@@ -57,7 +59,9 @@ onRegister(){
           if (user.result) {
             // alert("Successfully registered Service Provider")
             this.toastr.success("Successfully registered as Service Provider")
-            window.location.reload()
+            timer(2000).subscribe(() => {
+              window.location.reload()
+            });
           }
         })
       }
