@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Inject, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-register-page',
@@ -11,6 +13,10 @@ import { Router } from '@angular/router';
   styleUrl: './register-page.component.css'
 })
 export class RegisterPageComponent {
+
+  constructor(private toastr:ToastrService){
+
+  }
 registerObj:any={
   userName:"",
   email:"",
@@ -39,7 +45,8 @@ onRegister(){
         this.http.post("https://localhost:5002/api/UserApi",this.registerObj).subscribe((user:any)=>{
           console.log(user)
           if (user.result) {
-            alert("Successfully registered User")
+            // alert("Successfully registered User")
+            this.toastr.success("Successfully registered as User")
             window.location.reload()
           }
         })
@@ -48,7 +55,8 @@ onRegister(){
         this.http.post("https://localhost:7057/api/Services/Register",this.registerObj).subscribe((user:any)=>{
           console.log(user)
           if (user.result) {
-            alert("Successfully registered Service Provider")
+            // alert("Successfully registered Service Provider")
+            this.toastr.success("Successfully registered as Service Provider")
             window.location.reload()
           }
         })
@@ -73,18 +81,32 @@ onLogin(){
   if (res) {
     
     if(res.role=="user") {
-      this.router.navigateByUrl('user')
+      this.toastr.success("Successfully Logged in as User")
+      // this.router.navigateByUrl('user')
+      timer(2000).subscribe(() => {
+        this.router.navigateByUrl('user');
+      });
       
     }
     if (res.role=="provider") {
-      this.router.navigateByUrl('professionals')
+      this.toastr.success("Successfully Logged in as Service Provider")
+      timer(2000).subscribe(() => {
+        this.router.navigateByUrl('professionals');
+      });
+      
     }
     if(res.role=="admin"){
-      this.router.navigateByUrl('admin')
+      this.toastr.success("Successfully Logged in as Admin")
+      timer(2000).subscribe(() => {
+        this.router.navigateByUrl('admin');
+      });
+      
     }
   }
   
   })
 }
+
+
 
 }
