@@ -51,7 +51,7 @@ export class UserProfilePageComponent implements OnInit {
   http = inject(HttpClient)
 
   getDetails(name: string) {
-    this.http.get("https://localhost:7057/api/Services/GetProfessionalByUserName/" +name ).subscribe((res: any) => {
+    this.http.get("https://localhost:5002/api/UserApi/ByUserName/" +name ).subscribe((res: any) => {
       console.log(res)
       if(res.isSuccessful){
         this.UserObj=res.result
