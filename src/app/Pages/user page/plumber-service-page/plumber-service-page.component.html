@@ -85,8 +85,14 @@
                   <div class="custom-container">
                     <p class="card-text">Price: {{item.basePay}} <br>Rating: {{item.rating}}</p>
                   <!-- Button with hover effect -->
-                  <button type="button" class="btn btn-primary btn-block book-now-btn custom-btn" (click)="Book">Book</button>
-                  </div>
+                  <button 
+                  type="button" 
+                  routerLink="/status" 
+                  class="btn btn-primary btn-block book-now-btn custom-btn" 
+                  (click)="Book()">
+                  Book
+                </button>
+                </div>
               </div>
           </div>
       </div>
