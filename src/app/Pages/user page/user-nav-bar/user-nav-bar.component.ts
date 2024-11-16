@@ -14,5 +14,5 @@ import { TutorServicePageComponent } from '../tutor-service-page/tutor-service-p
   styleUrl: './user-nav-bar.component.css'
 })
 export class UserNavBarComponent {
-
+profileName = localStorage.getItem('userName')
 }
