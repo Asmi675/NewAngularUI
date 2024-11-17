@@ -20,13 +20,14 @@ import { ProfSummaryComponent } from './Pages/Professionals/prof-summary/prof-su
 import { BookingStatusComponent } from './Pages/user page/booking-status/booking-status.component';
 import { RequestPageComponent } from './Pages/Professionals/request-page/request-page.component';
 import { ProfDetailsComponent } from './Pages/Admin/prof-details/prof-details.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes =
     [
         { path: "", redirectTo: "register", pathMatch: 'full' },
         { path: "register", component: RegisterPageComponent },
         { path: "nav", component: UserNavBarComponent },
-        { path: 'user', component: UserHomePageComponent },
+        { path: 'user', component: UserHomePageComponent,canActivate:[authGuard] },
         { path: "tutor", component: TutorServicePageComponent },
         { path: "plumber", component: PlumberServicePageComponent },
         { path: "electrician", component: ElectricianServicePageComponent },
@@ -34,7 +35,7 @@ export const routes: Routes =
         { path : "status" , component: BookingStatusComponent },
 
         {
-            path: "admin", component: AdminHomePageComponent,
+            path: "admin", component: AdminHomePageComponent,canActivate:[authGuard],
             children: [
                 { path: "", redirectTo: "adsummary", pathMatch: 'full'},
                 {
@@ -53,7 +54,7 @@ export const routes: Routes =
         },
 
         {
-            path: "professionals", component: ProfHomePageComponent,
+            path: "professionals", component: ProfHomePageComponent,canActivate:[authGuard],
             children:
                 [
                     { path: "", redirectTo: "profstatus", pathMatch: 'full'},
