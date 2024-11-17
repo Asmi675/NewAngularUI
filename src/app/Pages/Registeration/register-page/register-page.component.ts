@@ -16,6 +16,7 @@ import { timer } from 'rxjs';
 export class RegisterPageComponent {
   passwordError:boolean=false;
   emailError:boolean=false;
+  disabledButton:boolean = false;
 
   constructor(private toastr:ToastrService){
 
@@ -41,7 +42,7 @@ onRegister(){
   if (this.ischeck) {
     this.registerObj.role="provider"
   }
-  if (this.passwordError && this.emailError) {
+ if (this.passwordError && this.emailError) {
     this.http.post("https://localhost:7001/api/AuthApi/Register",this.registerObj).subscribe((res:any)=>{
       console.log(res)
       if(res.isSuccessful){
@@ -80,6 +81,12 @@ onRegister(){
       alert("Something went wrong")
      }
     })
+  }
+  if(!this.passwordError){
+    this.toastr.error("PassWord is Invalid")
+  }
+  if (!this.emailError) {
+    this.toastr.error("Email is invaild")
   }
   
 }
@@ -120,6 +127,9 @@ onLogin(){
       });
       
     }
+    if (res.userName==null) {
+      this.toastr.error("User Name or Password is Incorrect")
+    }
   }
   
   })
@@ -137,6 +147,10 @@ validateEmail(email: string): void {
   const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   if (!emailPattern.test(email)) {
     this.toastr.error('Invalid email format');
+    this.emailError=false
+  }
+  else{
+    this.emailError=true
   }
 }
 
@@ -162,5 +176,7 @@ validatePassword(): void {
     this.passwordError = true; // No errors
   }
 }
+
+
 
 }
