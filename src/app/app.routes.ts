@@ -37,7 +37,7 @@ export const routes: Routes =
         {
             path: "admin", component: AdminHomePageComponent,canActivate:[authGuard],
             children: [
-                { path: "", redirectTo: "adsummary", pathMatch: 'full'},
+                { path: "", redirectTo: "details", pathMatch: 'full'},
                 {
                     path: "aduser", component: AdminListUserDetailsComponent
                 },
