@@ -39,4 +39,7 @@ body {
 .nav-item.dropdown:hover .nav-link,
 .nav-item.dropdown .nav-link:hover {
   cursor: pointer !important; /* Hand cursor for clickable link */
+  background-color: rgb(232, 232, 231);
+  border-radius: 10px;
 }
+

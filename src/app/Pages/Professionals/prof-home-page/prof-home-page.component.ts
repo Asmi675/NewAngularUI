@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Component, OnInit, inject } from '@angular/core';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { ProfProfilePageComponent } from "../prof-profile-page/prof-profile-page.component";
 import { RequestPageComponent } from "../request-page/request-page.component";
 
@@ -10,6 +10,16 @@ import { RequestPageComponent } from "../request-page/request-page.component";
   templateUrl: './prof-home-page.component.html',
   styleUrl: './prof-home-page.component.css'
 })
-export class ProfHomePageComponent {
+export class ProfHomePageComponent implements OnInit {
+profileName:any
+  router = inject(Router)
+ngOnInit(): void {
+  this.profileName = localStorage.getItem('userName')
+}
 
+
+onLogOut(){
+  localStorage.clear()
+  this.router.navigateByUrl('register')
+}
 }

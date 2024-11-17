@@ -68,6 +68,24 @@ domain:string="Plumber"
     this.ProfileName = localStorage.getItem('userName')
   }
 
+  BookingDetails:any={
+    id: 0,
+    userName: "",
+    professionalName: "",
+    bookingStatus: "",
+    bookingRequestedSuccessfully: false,
+    serviceProviderResponse: false,
+    isCompleted: false,
+    serviceProvided: "",
+    serviceDetails: "",
+    price: 0,
+    createdAt: "2024-11-17T11:38:06.758Z",
+    paymetSuccessful: false,
+    cancelationConfirmed: false
+  }
+ 
+
+
   fetchServicesFromBackend() {
     this.http.get("https://localhost:7057/api/Services/GetProfessionalsByDomain/"+this.domain).subscribe((res:any)=>{
       console.log(res.result)
@@ -80,7 +98,13 @@ domain:string="Plumber"
     localStorage.clear()
   }
 
-  Book(){
- 
+  Book(item:any,){
+ console.log(item)
+ this.BookingDetails.userName=localStorage.getItem('userName')
+ this.BookingDetails.professionalName = item.userName
+ this.BookingDetails.bookingStatus = "Booking Started"
+ this.BookingDetails.serviceProvided = item.domain
+ this.BookingDetails.price = item.basePay
+ console.log(this.BookingDetails)
   }
 }

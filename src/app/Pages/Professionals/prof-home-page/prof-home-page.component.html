@@ -33,12 +33,12 @@
         <!-- Profile Dropdown -->
         <li ngbDropdown class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="navbarDropdownProfile" ngbDropdownToggle aria-expanded="false">
-            ProfileName
+            {{profileName}}
           </a>
           <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdownProfile">
             <li><a class="dropdown-item" routerLink="profstatus">User Request</a></li>
             <li><a class="dropdown-item" routerLink="profprofile">Edit Profile</a></li>
-            <li><a class="dropdown-item" routerLink="#">Logout</a></li>
+            <li><a class="dropdown-item logout-theme" href="" (click)="onLogOut() ">Logout</a></li>
           </ul>
         </li>
 
