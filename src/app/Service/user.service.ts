@@ -18,4 +18,8 @@ export class APIService {
     return this.http.get("https://localhost:7057/api/Services/GetAllProfessionals");
   }
 
+  confirmProfessionals(confirmres:any){
+   return this.http.put("https://localhost:7057/api/Services/ConfirmService",confirmres)
+  }
+
 }

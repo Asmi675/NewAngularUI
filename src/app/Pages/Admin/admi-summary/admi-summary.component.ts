@@ -13,7 +13,8 @@ export class AdmiSummaryComponent implements OnInit {
   ngOnInit(): void {
    
     this.totalTutorBooking()
-
+    this.totalElectricianBooking()
+    this.totalPlumberBooking()
    
   }
 
@@ -35,27 +36,27 @@ export class AdmiSummaryComponent implements OnInit {
       }
     })
 
-    this.http.get("https://localhost:7025/api/Summary/ServiceSummary/Electrician").subscribe((res: any) => {
-      if (res.isSuccessful) {
-        this.noOfTutors = res.result.count
-       
-      }
-    })
+   
 
-    this.http.get("https://localhost:7025/api/Summary/ServiceSummary/Plumber").subscribe((res: any) => {
-      if (res.isSuccessful) {
-        this.noOfTutors = res.result.count
-       
-      }
-    })
+
   }
 
   totalElectricianBooking() {
-    
+     this.http.get("https://localhost:7025/api/Summary/ServiceSummary/Electrician").subscribe((res: any) => {
+      if (res.isSuccessful) {
+        this.noOfElectricians = res.result.count
+       
+      }
+    })
   }
 
   totalPlumberBooking() {
-   
+       this.http.get("https://localhost:7025/api/Summary/ServiceSummary/Plumber").subscribe((res: any) => {
+      if (res.isSuccessful) {
+        this.noOfPlumbers = res.result.count
+       
+      }
+    })
   }
 
 }

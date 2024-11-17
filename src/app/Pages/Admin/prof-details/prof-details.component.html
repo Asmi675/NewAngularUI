@@ -1,18 +1,25 @@
 <div class="container1">
     <!-- Left Section -->
-    <div class="left-section">
-      <h2>Professional Details</h2>
-      <div class="profile-card">
-        <img src="face.png" alt="Profile Picture" class="profile-pic">
-        <p><strong>Name:</strong> John Doe</p>
-        <p><strong>UserName:</strong> John Doe</p>
-        <p><strong>Phone No:</strong> +123-456-7890</p>
-        <p><strong>Address:</strong> John Doe</p>
-        <p><strong>Gender:</strong> John Doe</p>
-        <p><strong>Email:</strong> </p>
-        <p><strong>Cumulative Rating:</strong> 4.5/5</p>
-      </div>
-    </div>
+
+    @for (item of ProfessionalList; track $index) {
+      @if (!item.isConfirmed) {
+        <div class="left-section">
+          <h2>Professional Details</h2>
+          <div class="profile-card">
+            <img src="face.png" alt="Profile Picture" class="profile-pic">
+            <p><strong>Name:</strong> John Doe</p>
+            <p><strong>UserName:</strong> John Doe</p>
+            <p><strong>Phone No:</strong> +123-456-7890</p>
+            <p><strong>Address:</strong> John Doe</p>
+            <p><strong>Gender:</strong> John Doe</p>
+            <p><strong>Email:</strong> </p>
+            <p><strong>Cumulative Rating:</strong> 4.5/5</p>
+            <button type="submit" class="btn btn-danger btn-block" (click)="confirm(item.id)">Confirm</button>
+          </div>
+        </div>
+      }
+    }
+    
 
     <!-- Right Section -->
     <div class="right-section">
