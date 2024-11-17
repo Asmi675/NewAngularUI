@@ -7,13 +7,15 @@
           <h2>Professional Details</h2>
           <div class="profile-card">
             <img src="face.png" alt="Profile Picture" class="profile-pic">
-            <p><strong>Name:</strong> John Doe</p>
-            <p><strong>UserName:</strong> John Doe</p>
-            <p><strong>Phone No:</strong> +123-456-7890</p>
-            <p><strong>Address:</strong> John Doe</p>
-            <p><strong>Gender:</strong> John Doe</p>
-            <p><strong>Email:</strong> </p>
-            <p><strong>Cumulative Rating:</strong> 4.5/5</p>
+            <p><strong>Name:</strong>{{item.name}}</p>
+            <p><strong>UserName:</strong>{{item.userName}}</p>
+            <p><strong>Phone No:</strong> {{item.phone}}</p>
+            <p><strong>Address:</strong>{{item.address}}</p>
+            <p><strong>Gender:</strong> {{item.gender}}</p>
+            <p><strong>Email:</strong> {{item.email}}</p>
+            <p><strong> Rating:</strong> {{item.rating}}</p>
+            <label class="labels">New Rating</label>
+                            <input [(ngModel)]="confirmRes.rating" type="text" class="form-control" placeholder="Enter New Rating" value="0">
             <button type="submit" class="btn btn-danger btn-block" (click)="confirm(item.id)">Confirm</button>
           </div>
         </div>

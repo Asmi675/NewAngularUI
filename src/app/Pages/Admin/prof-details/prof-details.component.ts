@@ -2,11 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { APIService } from '../../../Service/user.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-prof-details',
   standalone: true,
-  imports: [RouterOutlet,RouterLink],
+  imports: [RouterOutlet,RouterLink,FormsModule],
   templateUrl: './prof-details.component.html',
   styleUrl: './prof-details.component.css'
 })
@@ -22,7 +23,7 @@ http = inject(HttpClient)
 ProfessionalList:any
 confirmRes:any={
   id: "",
-  rating: 4.5,
+  rating: "",
   status: false
 }
 
