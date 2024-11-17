@@ -1,49 +1,46 @@
 <div class="container1">
-    <!-- Left Section -->
-
-    @for (item of ProfessionalList; track $index) {
-      @if (!item.isConfirmed) {
-        <div class="left-section">
-          <h2>Professional Details</h2>
-          <div class="profile-card">
-            <img src="face.png" alt="Profile Picture" class="profile-pic">
-            <p><strong>Name:</strong>{{item.name}}</p>
-            <p><strong>UserName:</strong>{{item.userName}}</p>
-            <p><strong>Phone No:</strong> {{item.phone}}</p>
-            <p><strong>Address:</strong>{{item.address}}</p>
-            <p><strong>Gender:</strong> {{item.gender}}</p>
-            <p><strong>Email:</strong> {{item.email}}</p>
-            <p><strong> Rating:</strong> {{item.rating}}</p>
-            <label class="labels">New Rating</label>
-                            <input [(ngModel)]="confirmRes.rating" type="text" class="form-control" placeholder="Enter New Rating" value="0">
-            <button type="submit" class="btn btn-danger btn-block" (click)="confirm(item.id)">Confirm</button>
-          </div>
-        </div>
+  <!-- Left Section -->
+  <div class="left-section">
+      <h2>Professional Details</h2>
+      @for (item of ProfessionalList; track $index) {
+          @if (!item.isConfirmed) {
+              <div class="profile-card">
+                  <img src="face.png" alt="Profile Picture" class="profile-pic">
+                  <p><strong>Name:</strong> {{item.name}}</p>
+                  <p><strong>UserName:</strong> {{item.userName}}</p>
+                  <p><strong>Phone No:</strong> {{item.phone}}</p>
+                  <p><strong>Address:</strong> {{item.address}}</p>
+                  <p><strong>Gender:</strong> {{item.gender}}</p>
+                  <p><strong>Email:</strong> {{item.email}}</p>
+                  <p><strong>Rating:</strong> {{item.rating}}</p>
+                  <label class="labels">New Rating</label>
+                  <input [(ngModel)]="confirmRes.rating" type="text" class="form-control" placeholder="Enter New Rating" value="0">
+                  <button type="submit" class="btn btn-danger btn-block" (click)="confirm(item.id)">Confirm</button>
+              </div>
+          }
+          <br>
       }
-    }
-    
-
-    <!-- Right Section -->
-    <div class="right-section">
-      <div class="previous-booking-card">
-        <h3>Tutor Bookings</h3>
-        <p><strong>Review:</strong> Excellent service, very professional!</p>
-        <p><strong>Rating:</strong> 5/5</p>
-        <p><strong>Booking Count : {{noOfTutors}}</strong></p>
-      </div>
-      <div class="previous-booking-card">
-        <h3>Electrician Bookings</h3>
-        <p><strong>Review:</strong> Excellent service, very professional!</p>
-        <p><strong>Rating:</strong> 5/5</p>
-        <p><strong>Booking Count : {{noOfElectricians}}</strong></p>
-      </div>
-      <div class="previous-booking-card">
-        <h3>Plumber Bookings</h3>
-        <p><strong>Review:</strong> Excellent service, very professional!</p>
-        <p><strong>Rating:</strong> 5/5</p>
-        <p><strong>Booking Count : {{noOfPlumbers}}</strong></p>
-      </div>
-    </div>
   </div>
 
-
+  <!-- Right Section -->
+  <div class="right-section">
+      <div class="previous-booking-card">
+          <h3>Tutor Bookings</h3>
+          <p><strong>Review:</strong> Excellent service, very professional!</p>
+          <p><strong>Rating:</strong> 5/5</p>
+          <p><strong>Booking Count : {{noOfTutors}}</strong></p>
+      </div>
+      <div class="previous-booking-card">
+          <h3>Electrician Bookings</h3>
+          <p><strong>Review:</strong> Excellent service, very professional!</p>
+          <p><strong>Rating:</strong> 5/5</p>
+          <p><strong>Booking Count : {{noOfElectricians}}</strong></p>
+      </div>
+      <div class="previous-booking-card">
+          <h3>Plumber Bookings</h3>
+          <p><strong>Review:</strong> Excellent service, very professional!</p>
+          <p><strong>Rating:</strong> 5/5</p>
+          <p><strong>Booking Count : {{noOfPlumbers}}</strong></p>
+      </div>
+  </div>
+</div>
