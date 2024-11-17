@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet} from '@angular/router';
 
 
@@ -9,7 +9,7 @@ import { RouterLink, RouterOutlet} from '@angular/router';
   templateUrl: './booking-status.component.html',
   styleUrl: './booking-status.component.css'
 })
-export class BookingStatusComponent {
+export class BookingStatusComponent implements OnInit {
   ProfileName:any =""
   
   ngOnInit(): void {
@@ -21,6 +21,6 @@ export class BookingStatusComponent {
   }
 
   Book(){
- 
+    console.log('Booking process initiated!');
   }
 }

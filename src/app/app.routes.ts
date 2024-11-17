@@ -15,9 +15,11 @@ import { UserProfilePageComponent } from './Pages/user page/user-profile-page/us
 import { RegisterPageComponent } from './Pages/Registeration/register-page/register-page.component';
 import { ProfHomePageComponent } from './Pages/Professionals/prof-home-page/prof-home-page.component';
 import { ProfProfilePageComponent } from './Pages/Professionals/prof-profile-page/prof-profile-page.component';
-import { ProfCangeStatusComponent } from './Pages/Professionals/prof-cange-status/prof-cange-status.component';
+// import { ProfCangeStatusComponent } from './Pages/Professionals/Request-status/prof-cange-status.component';
 import { ProfSummaryComponent } from './Pages/Professionals/prof-summary/prof-summary.component';
 import { BookingStatusComponent } from './Pages/user page/booking-status/booking-status.component';
+import { RequestPageComponent } from './Pages/Professionals/request-page/request-page.component';
+import { ProfDetailsComponent } from './Pages/Admin/prof-details/prof-details.component';
 
 export const routes: Routes =
     [
@@ -34,6 +36,7 @@ export const routes: Routes =
         {
             path: "admin", component: AdminHomePageComponent,
             children: [
+                { path: "", redirectTo: "adsummary", pathMatch: 'full'},
                 {
                     path: "aduser", component: AdminListUserDetailsComponent
                 },
@@ -42,6 +45,9 @@ export const routes: Routes =
                 },
                 {
                     path: "adsummary", component: AdmiSummaryComponent
+                },
+                {
+                    path : "details", component:ProfDetailsComponent
                 }
             ]
         },
@@ -50,17 +56,20 @@ export const routes: Routes =
             path: "professionals", component: ProfHomePageComponent,
             children:
                 [
+                    { path: "", redirectTo: "profstatus", pathMatch: 'full'},
                     {
                         path: "profprofile", component: ProfProfilePageComponent
                     },
                     {
-                        path: "profstatus", component: ProfCangeStatusComponent
+                        path: "profstatus", component: RequestPageComponent
                     },
                     {
                         path: "profsummary", component: ProfSummaryComponent
                     }
+
                 ]
         }
+
 
     ];
 

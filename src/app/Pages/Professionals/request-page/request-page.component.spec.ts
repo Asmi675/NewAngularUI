@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProfCangeStatusComponent } from './prof-cange-status.component';
+import { RequestPageComponent } from './request-page.component';
 
-describe('ProfCangeStatusComponent', () => {
-  let component: ProfCangeStatusComponent;
-  let fixture: ComponentFixture<ProfCangeStatusComponent>;
+describe('RequestPageComponent', () => {
+  let component: RequestPageComponent;
+  let fixture: ComponentFixture<RequestPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProfCangeStatusComponent]
+      imports: [RequestPageComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ProfCangeStatusComponent);
+    fixture = TestBed.createComponent(RequestPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

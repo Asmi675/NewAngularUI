@@ -7,6 +7,7 @@ body {
   .navbar {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: #f8f9fa;
+    height: 12%;
   }
   
   /* Remove the caret from the dropdown toggle */
@@ -59,7 +60,7 @@ body {
     background-color: #f8f9fa;
   }
   
-  .container {
+  .container1 {
     display: flex;
     flex-direction: row;
     width: 100%;

@@ -1,50 +1,53 @@
-/* Sidebar style */
-.sidenav {
-  position: fixed; /* Fix the sidebar to the left of the page */
-  top: 70px; /* Adjust to move the sidebar below the navbar */
-  left: 0;
-  height: 100%; /* Ensure it takes up the full height of the screen */
-  width: 250px;
-  background-color: #343a40; /* Dark background for the sidebar */
-  padding-top: 20px;
-  transition: 0.3s;
-  z-index: 1050; /* Make sure the sidebar stays above content */
-  overflow-y: auto; /* Allow the sidebar to scroll if its content overflows */
+/* General styles for body */
+body {
+  background-color: #343a40;  /* Same color as the top navbar */
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
 }
 
+/* Main Content (Dashboard) */
+.content {
+  margin-left: 0;
+  padding: 20px;
+  background-color: #f4f4f4;  /* A light background for the content */
+  min-height: 100vh;  /* Ensures the content stretches vertically */
+}
+
+/* Side Navigation Styles */
+.sidenav {
+  background-color: #343a40;  /* Same color as the top navbar */
+  padding: 10px 20px;
+  width: 200px; /* Adjust width */
+  height: 100vh; /* Full height */
+  position: fixed; /* Fixed on the left */
+  top: 0; /* Align with top */
+  left: 0; /* Stay on the left */
+  z-index: 1050; /* Above other content */
+  overflow-y: auto;
+}
+
+/* List styles for sidenav */
 .sidenav ul {
-  padding-left: 0;
-  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 .sidenav a {
-  padding: 10px 15px;
-  text-decoration: none;
-  font-size: 18px;
-  color: #fff;
   display: block;
-  transition: 0.3s;
+  padding: 10px;
+  text-decoration: none;
+  color: #fff;
+  transition: background-color 0.3s ease;
 }
 
 .sidenav a:hover {
-  background-color: #575757;
+  background-color: #495057;
 }
 
-/* Content area */
-.content {
-  margin-left: 250px; /* Ensure the content is not overlapped by the sidebar */
-  padding: 16px;
-  height: 100%; /* Ensure the content takes full height */
-}
-
-/* Responsive design */
-@media screen and (max-width: 700px) {
-  .sidenav {
-    width: 100%;
-    height: auto;
-  }
-
+/* Mobile and small screens */
+@media (max-width: 767px) {
   .content {
-    margin-left: 0;
+    margin-left: 0; /* Ensure content doesn't shift */
   }
 }
