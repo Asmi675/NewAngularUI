@@ -13,6 +13,9 @@ import { APIService } from '../../../Service/user.service';
 export class ProfDetailsComponent implements OnInit {
   ngOnInit(): void {
    this.getProviders()
+   this.totalTutorBooking()
+   this.totalElectricianBooking()
+   this.totalPlumberBooking()
   }
   APIServices = inject(APIService)
 http = inject(HttpClient)
@@ -22,6 +25,11 @@ confirmRes:any={
   rating: 4.5,
   status: false
 }
+
+noOfPlumbers:any = 0
+  noOfTutors: any = 0
+  noOfElectricians: any = 0
+
 confirm(id:any){
   this.confirmRes.id=id
   this.confirmRes.status=true
@@ -38,6 +46,39 @@ getProviders(){
     console.log(res.result)
     this.ProfessionalList=res.result;
 })
+}
+
+totalTutorBooking() {
+  this.http.get("https://localhost:7025/api/Summary/ServiceSummary/Tutor").subscribe((res: any) => {
+    console.log(res) 
+  if (res.isSuccessful) {
+      console.log(res.result.count)
+      this.noOfTutors = res.result.count
+      
+    }
+  })
+
+ 
+
+
+}
+
+totalElectricianBooking() {
+   this.http.get("https://localhost:7025/api/Summary/ServiceSummary/Electrician").subscribe((res: any) => {
+    if (res.isSuccessful) {
+      this.noOfElectricians = res.result.count
+     
+    }
+  })
+}
+
+totalPlumberBooking() {
+     this.http.get("https://localhost:7025/api/Summary/ServiceSummary/Plumber").subscribe((res: any) => {
+    if (res.isSuccessful) {
+      this.noOfPlumbers = res.result.count
+     
+    }
+  })
 }
 
 }
