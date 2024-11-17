@@ -106,5 +106,8 @@ domain:string="Plumber"
  this.BookingDetails.serviceProvided = item.domain
  this.BookingDetails.price = item.basePay
  console.log(this.BookingDetails)
+ this.http.post("https://localhost:7025/api/booking",this.BookingDetails).subscribe((res:any)=>{
+  console.log(res)
+ })
   }
 }

@@ -68,16 +68,19 @@
     <div class="container1">
       <!-- Left Section -->
       <div class="left-section">
-        <h2>Professional Details</h2>
-        <div class="profile-card">
-          <img src="face.png" alt="Profile Picture" class="profile-pic">
-          <p><strong>Name:</strong> John Doe</p>
-          <p><strong>Phone No:</strong> +123-456-7890</p>
-          <p><strong>Email:</strong> </p>
-          <p><strong>Base Pay:</strong> $40/hour</p>
-          <p><strong>Cumulative Rating:</strong> 4.5/5</p>
-          <p><strong>Available:</strong> Yes</p>
-        </div>
+        <h2>Booking Details</h2>
+        @for (item of BookingDetails; track $index) {
+          <div class="profile-card">
+            <img src="face.png" alt="Profile Picture" class="profile-pic">
+            <p><strong>Name:</strong> {{item.professionalName}} </p>
+            <p><strong>Booked Srevice:</strong> {{item.serviceProvided}}</p>
+            <p><strong>Date of creation:</strong> {{item.createdAt | date}} </p>
+            <p><strong>Price:</strong> {{item.price}} /hour</p>
+            <p><strong>Cumulative Rating:</strong> 4.5/5</p>
+            <p><strong>Available:</strong> Yes</p>
+          </div>
+        }
+        
       </div>
   
       <!-- Right Section -->
