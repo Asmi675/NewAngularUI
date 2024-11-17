@@ -6,13 +6,15 @@
     
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <table class="table table-bordered text-center table-striped custom-shadow">
+                <table class="table table-bordered table-hover text-center table-striped custom-shadow">
                     <thead>
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
                             <th>Domain</th>
                             <th>Email</th>
+                            <th>Delete</th>
+                            <th>Details</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -23,7 +25,8 @@
                                 <td>{{item.name}}</td>
                                 <td>{{item.domain}}</td>
                                 <td>{{item.email}}</td>
-                                <td><button type="submit" class="btn btn-danger btn-block" (click)="onDelete(item.id)">Delete</button></td>
+                                <td><button type="button" class="btn btn-danger btn-block" (click)="onDelete(item.id)">Delete</button></td>
+                                <td><button type="button" class="btn btn-warning btn-block" (click)="onDetails(item.id)">Details</button></td>            
                             </tr>
                         }
                     </tbody>

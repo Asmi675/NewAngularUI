@@ -37,4 +37,8 @@ http = inject(HttpClient)
       window.location.reload()
     })
   }
+
+  onDetails(value:any){
+localStorage.setItem('profId',value)
+  }
 }
