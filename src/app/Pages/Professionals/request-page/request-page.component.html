@@ -11,7 +11,7 @@
           <p><strong>Created At:</strong> {{item.createdAt}} </p>
           <p><strong>Base Pay:</strong> {{item.price}} /hour</p>
           <p><strong>Booking Status:</strong> {{item.bookingStatus}} </p>
-          <button type="submit" class="btn btn-info btn-block custom1" (click)="Confirm()">Confirm</button>
+          <button type="submit" class="btn btn-info btn-block custom1" (click)="Confirm(item.id)">Confirm</button>
 
         </div>
         <br>
@@ -23,7 +23,7 @@
     <div class="right-section"  >
       <div class="previous-booking-card"  >
         <h3>Total Booking</h3><br>
-        <p><strong>Count:</strong></p>
+        <p><strong>Count:</strong> {{bookingCount}} </p>
         <!-- <p><strong>Rating:</strong> 5/5</p> -->
       </div>
     </div>

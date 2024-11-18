@@ -79,25 +79,28 @@
       <!-- Loop through the services array to create cards dynamically -->
 
       @for (item of data; track $index) {
-      <div class="col-md-6 mb-4 custom1">
-          <div class="card h-100">
-              <img src="plumber img_2.jpg" class="card-img-top" alt="" />
-              <div class="card-body">
-                  <h5 class="card-title">Name: {{item.name}}</h5>
-                  <div class="custom-container">
-                    <p class="card-text">Price: {{item.basePay}} <br>Rating: {{item.rating}}</p>
-                  <!-- Button with hover effect -->
-                  <button 
-                  type="button" 
-                  routerLink="/status" 
-                  class="btn btn-primary btn-block book-now-btn custom-btn" 
-                  (click)="Book(item)">
-                  Book
-                </button>
+        @if (item.isAvailable) {
+          <div class="col-md-6 mb-4 custom1">
+            <div class="card h-100">
+                <img src="plumber img_2.jpg" class="card-img-top" alt="" />
+                <div class="card-body">
+                    <h5 class="card-title">Name: {{item.name}}</h5>
+                    <div class="custom-container">
+                      <p class="card-text">Price: {{item.basePay}} <br>Rating: {{item.rating}}</p>
+                    <!-- Button with hover effect -->
+                    <button 
+                    type="button" 
+                    routerLink="/status" 
+                    class="btn btn-primary btn-block book-now-btn custom-btn" 
+                    (click)="Book(item)">
+                    Book
+                  </button>
+                  </div>
                 </div>
-              </div>
-          </div>
-      </div>
+            </div>
+        </div>
+        }
+      
       }
 
 

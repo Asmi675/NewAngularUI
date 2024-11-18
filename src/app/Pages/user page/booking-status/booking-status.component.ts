@@ -3,6 +3,7 @@ import { HttpBackend, HttpClient } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet} from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -13,6 +14,11 @@ import { RouterLink, RouterOutlet} from '@angular/router';
   styleUrl: './booking-status.component.css'
 })
 export class BookingStatusComponent implements OnInit {
+
+  constructor(private toastr:ToastrService){
+
+  }
+
   ProfileName:any =""
   http = inject(HttpClient)
   ngOnInit(): void {
@@ -50,10 +56,15 @@ isVisible:boolean=false
  }
  Submit(){
   this.reviewObj.userName=this.ProfileName
+  this.reviewObj.message=this.reviewmessage
   console.log(this.reviewObj)
   this.http.post("https://localhost:7057/api/User/Reviews/AddReview",this.reviewObj).subscribe((res:any)=>{
     console.log(res)
-    
+    if (res.isSuccessful) {
+      this.toastr.success("review successfully submitted")
+      
+    }
+
   })
  }
 
@@ -65,6 +76,7 @@ reviewObj:any={
   message: "",
   userRating: 0
 }
+reviewmessage:any
 
  Review(name:string){
 this.isVisible=true
