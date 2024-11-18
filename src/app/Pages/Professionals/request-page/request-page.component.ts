@@ -29,4 +29,7 @@ BookingRequests:any
       }
     })
   }
+  Confirm(){
+    
+  }
 }
