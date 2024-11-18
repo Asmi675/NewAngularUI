@@ -3,15 +3,18 @@
     <!-- Left Section -->
     <div class="left-section">
       <h2>User Details</h2>
-      <div class="profile-card">
-        <img src="face.png" alt="Profile Picture" class="profile-pic">
-        <p><strong>Name:</strong> John Doe</p>
-        <p><strong>Phone No:</strong> +123-456-7890</p>
-        <p><strong>Email:</strong> </p>
-        <p><strong>Base Pay:</strong> $40/hour</p>
-        <p><strong>Cumulative Rating:</strong> 4.5/5</p>
-        <p><strong>Available:</strong> Yes</p>
-      </div>
+      @for (item of BookingRequests; track $index) {
+        <div class="profile-card">
+          <img src="face.png" alt="Profile Picture" class="profile-pic">
+          <p><strong>Name:</strong> {{item.userName}}</p>
+          <p><strong>Service Requested:</strong> {{item.serviceProvided}} </p>
+          <p><strong>Created At:</strong> {{item.createdAt}} </p>
+          <p><strong>Base Pay:</strong> {{item.price}} /hour</p>
+          <p><strong>Booking Status:</strong> {{item.bookingStatus}} </p>
+         
+        </div>
+      }
+      
     </div>
 
     <!-- Right Section -->

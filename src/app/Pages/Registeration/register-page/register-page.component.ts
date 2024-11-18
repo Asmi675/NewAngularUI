@@ -14,12 +14,12 @@ import { timer } from 'rxjs';
   styleUrl: './register-page.component.css'
 })
 export class RegisterPageComponent {
-  passwordError:boolean=false;
-  emailError:boolean=false;
+  passwordError:boolean=true
+  emailError:boolean=true;
   disabledButton:boolean = false;
 
   constructor(private toastr:ToastrService){
-
+localStorage.setItem('userName',"EmptyUser")
   }
 registerObj:any={
   userName:"",
@@ -127,7 +127,7 @@ onLogin(){
       });
       
     }
-    if (res.userName==null) {
+    if (res.role===null) {
       this.toastr.error("User Name or Password is Incorrect")
     }
   }
