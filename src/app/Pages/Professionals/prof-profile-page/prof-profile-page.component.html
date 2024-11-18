@@ -7,7 +7,7 @@
                 <span class="font-weight-bold">{{providerObj.name}}</span>
                 <span class="text-black-50">{{providerObj.userName}}</span><br>
                 <span><label for="filter" class="switch" aria-label="Toggle Filter">
-                        <input type="checkbox" id="filter" />
+                        <input type="checkbox" [(ngModel)]="providerObj.isAvailable" (ngModelChange)="onCheckboxChange(providerObj.id)" id="filter" name="isAvailable" />
                         <span>Leave</span>
                         <span>Available</span>
                     </label></span>

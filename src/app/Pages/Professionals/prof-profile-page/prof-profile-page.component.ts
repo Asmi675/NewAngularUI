@@ -12,6 +12,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 })
 export class ProfProfilePageComponent implements OnInit {
 userName:any = ""
+isAvailable:boolean=true
   ngOnInit(): void {
     this.userName = localStorage.getItem('userName')
     this.getDetails(this.userName)
@@ -58,6 +59,14 @@ userName:any = ""
         this.providerObj=res.result
         console.log(this.providerObj)
       }
+    })
+  }
+
+  onCheckboxChange(id:any) {
+    this.isAvailable=this.providerObj.isAvailable
+    console.log('Checkbox state changed:', this.isAvailable);
+    this.http.put("https://localhost:7057/api/Services/StatusChange?id="+id,this.isAvailable).subscribe((res:any)=>{
+      console.log(res)
     })
   }
 
