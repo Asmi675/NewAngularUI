@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Inject, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RecaptchaModule } from 'ng-recaptcha';
 import { ToastrService } from 'ngx-toastr';
 import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-register-page',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule,CommonModule,RecaptchaModule],
   templateUrl: './register-page.component.html',
   styleUrl: './register-page.component.css'
 })
@@ -17,6 +18,12 @@ export class RegisterPageComponent {
   passwordError:boolean=true
   emailError:boolean=true;
   disabledButton:boolean = false;
+  captchaResolved: boolean = false;
+
+  onCaptchaResolved(response: string): void {
+    this.captchaResolved = !!response;  // Will be true if CAPTCHA is resolved
+    console.log('reCAPTCHA response:', response);  // You can log the response if needed
+  }
 
   constructor(private toastr:ToastrService){
 localStorage.setItem('userName',"EmptyUser")
@@ -137,48 +144,54 @@ onRegister(){
 }
 
 onLogin(){
-  if (this.loginObj.userName==='admin' && this.loginObj.password==='admin') {
-    localStorage.setItem('userName','admin')
-    localStorage.setItem('role','admin')
-    this.router.navigateByUrl('admin')
-  }
-  else{
-    this.http.post("https://localhost:7001/api/AuthApi/Login",this.loginObj).subscribe((res:any)=>{
-    localStorage.setItem('userName',res.username)
-    localStorage.setItem('token',res.token)
-    localStorage.setItem('role',res.role)
-    console.log(res)
-  if (res) {
-    
-    if(res.role=="user") {
-      this.toastr.success("Successfully Logged in as User")
-      // this.router.navigateByUrl('user')
-      timer(2000).subscribe(() => {
-        this.router.navigateByUrl('user');
-      });
-      
-    }
-    if (res.role=="provider") {
-      this.toastr.success("Successfully Logged in as Service Provider")
-      timer(2000).subscribe(() => {
-        this.router.navigateByUrl('professionals');
-      });
-      
-    }
-    if(res.role=="admin"){
-      this.toastr.success("Successfully Logged in as Admin")
-      timer(2000).subscribe(() => {
-        this.router.navigateByUrl('admin');
-      });
-      
-    }
-    if (res.role===null) {
-      this.toastr.error("User Name or Password is Incorrect")
-    }
-  }
-  
-  })
-  }
+ if (this.captchaResolved) {
+  console.log('Captcha solved. Proceeding with login...');
+   if (this.loginObj.userName==='admin' && this.loginObj.password==='admin') {
+     localStorage.setItem('userName','admin')
+     localStorage.setItem('role','admin')
+     this.router.navigateByUrl('admin')
+   }
+   else{
+     this.http.post("https://localhost:7001/api/AuthApi/Login",this.loginObj).subscribe((res:any)=>{
+     localStorage.setItem('userName',res.username)
+     localStorage.setItem('token',res.token)
+     localStorage.setItem('role',res.role)
+     console.log(res)
+   if (res) {
+     
+     if(res.role=="user") {
+       this.toastr.success("Successfully Logged in as User")
+       // this.router.navigateByUrl('user')
+       timer(2000).subscribe(() => {
+         this.router.navigateByUrl('user');
+       });
+       
+     }
+     if (res.role=="provider") {
+       this.toastr.success("Successfully Logged in as Service Provider")
+       timer(2000).subscribe(() => {
+         this.router.navigateByUrl('professionals');
+       });
+       
+     }
+     if(res.role=="admin"){
+       this.toastr.success("Successfully Logged in as Admin")
+       timer(2000).subscribe(() => {
+         this.router.navigateByUrl('admin');
+       });
+       
+     }
+     if (res.role===null) {
+       this.toastr.error("User Name or Password is Incorrect")
+     }
+   }
+   
+   })
+   }
+ }
+ else{
+  console.log('Captcha not solved!');
+ }
   
 }
 

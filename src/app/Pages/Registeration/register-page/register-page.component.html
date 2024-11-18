@@ -6,7 +6,12 @@
 			<label for="chk" aria-hidden="true"style="color: #573b8a;">Login</label>
 			<input [(ngModel)]="loginObj.userName" type="text" name="username" placeholder="User Name" required="">
 			<input [(ngModel)]="loginObj.password" type="password" name="password" placeholder="Password" required="">
-			<button (click)="onLogin()">Login</button>
+			<re-captcha 
+      [siteKey]="'6LfUuYIqAAAAAEfchVbkCLw36Ca_PWlhKBnCnRMP'"  
+      (resolved)="onCaptchaResolved($event!)"
+      required>
+    </re-captcha>
+			<button  (click)="onLogin()" [disabled]="!captchaResolved">Login</button>
 			
 		</form>
 	</div>
