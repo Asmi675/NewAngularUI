@@ -1,13 +1,14 @@
 import { CommonModule, DatePipe } from '@angular/common';
 import { HttpBackend, HttpClient } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet} from '@angular/router';
 
 
 @Component({
   selector: 'app-booking-status',
   standalone: true,
-  imports: [RouterLink ,RouterOutlet,DatePipe,CommonModule ],
+  imports: [RouterLink ,RouterOutlet,DatePipe,CommonModule,FormsModule ],
   templateUrl: './booking-status.component.html',
   styleUrl: './booking-status.component.css'
 })
@@ -23,7 +24,7 @@ export class BookingStatusComponent implements OnInit {
   onLogOut(){
     localStorage.clear()
   }
-
+isVisible:boolean=false
   BookingDetails:any =[]
   uniqueProfessionalNames: any =[]
 
@@ -48,9 +49,26 @@ export class BookingStatusComponent implements OnInit {
   console.log(this.uniqueProfessionalNames)
  }
  Submit(){
-
+  this.reviewObj.userName=this.ProfileName
+  console.log(this.reviewObj)
+  this.http.post("https://localhost:7057/api/User/Reviews/AddReview",this.reviewObj).subscribe((res:any)=>{
+    console.log(res)
+    
+  })
  }
- Review(){
+
+reviewObj:any={
+  id: 0,
+  professionalName: "",
+  userName: "",
+  dateTime: "2024-11-18T04:33:22.899Z",
+  message: "",
+  userRating: 0
+}
+
+ Review(name:string){
+this.isVisible=true
+this.reviewObj.professionalName=name
 
  }
  Delete(){

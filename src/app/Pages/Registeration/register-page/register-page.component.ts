@@ -34,8 +34,51 @@ loginObj:any={
   password:""
 }
 ischeck:boolean=false
+isVisible:boolean = false
 http=inject(HttpClient)
 router = inject(Router)
+userOTP:any
+OTP:any
+OTPObj:any={
+  id: "",
+  email: "",
+  phone: "",
+  otp: ""
+}
+
+onOTPGenerate(){
+this.isVisible=true
+this.OTP=this.generateRandomNumber()
+console.log(this.OTP)
+this.OTPObj.id = this.registerObj.userName
+this.OTPObj.email = this.registerObj.email
+this.OTPObj.phone = this.registerObj.phone
+this.OTPObj.otp = this.OTP
+console.log(this.OTPObj)
+this.http.post("https://localhost:7153/api/novu/send-otp",this.OTPObj).subscribe((res:any)=>{
+  console.log(res)
+})
+
+}
+
+
+
+
+
+
+onOTPSubmit(){
+console.log(this.userOTP)
+console.log(this.registerObj)
+if (this.userOTP===this.OTP) {
+  this.onRegister()
+}
+else{
+  this.toastr.error("Invalid OTP")
+}
+  // this.onRegister()
+}
+
+
 
 onRegister(){
   console.log(this.registerObj)
@@ -88,6 +131,8 @@ onRegister(){
   if (!this.emailError) {
     this.toastr.error("Email is invaild")
   }
+
+
   
 }
 
@@ -175,6 +220,10 @@ validatePassword(): void {
   } else {
     this.passwordError = true; // No errors
   }
+}
+
+ generateRandomNumber(): string {
+  return (Math.floor(Math.random() * 900000) + 100000).toString();
 }
 
 

@@ -79,7 +79,7 @@
             <p><strong>Cumulative Rating:</strong> 4.5/5</p>
             <p><strong>Available:</strong> Yes</p>
             <br>
-            <button type="submit" class="btn btn-info btn-block custom3" (click)="Review()">Review</button>
+            <button type="submit" class="btn btn-info btn-block custom3" (click)="Review(item.professionalName)">Review</button>
             <button type="submit" class="btn btn-danger btn-block custom4" (click)="Delete()">Delete</button>
 
           </div>
@@ -90,10 +90,10 @@
   
       <!-- Right Section -->
       <div class="right-section">
-        <div class="previous-booking-card">
+        <div class="previous-booking-card" [ngStyle]="{ 'display': isVisible ? 'block' : 'none' }">
           <h3>Review Box</h3>
-          <h6>Professional Name :</h6>
-          <p><strong>Review: </strong><input type="text" class="sample"></p>
+          <h6>Professional Name :{{reviewObj.professionalName}}</h6>
+          <p><strong>Review: </strong><input type="number" class="sample" [(ngModel)]="reviewObj.userRating"></p>
           <!-- <p><strong>Review:</strong> Excellent service, very professional!</p> -->
           <!-- <p><strong>Rating:</strong> 5/5</p> -->
           <button type="submit" class="btn btn-success btn-block custom2" (click)="Submit()">Submit</button>

@@ -98,6 +98,13 @@ domain:string="Plumber"
     localStorage.clear()
   }
 
+EmailObj:any={
+  id: "",
+  email: "",
+  phone: "",
+  otp: ""
+}
+
   Book(item:any,){
  console.log(item)
  this.BookingDetails.userName=localStorage.getItem('userName')
@@ -108,6 +115,15 @@ domain:string="Plumber"
  console.log(this.BookingDetails)
  this.http.post("https://localhost:7025/api/booking",this.BookingDetails).subscribe((res:any)=>{
   console.log(res)
+  if(res.isSuccessful){
+    this.EmailObj.phone=item.phone
+    this.EmailObj.email=item.email
+    this.EmailObj.id="668920e8e86831190cc77f0e"
+    console.log(this.EmailObj)
+    this.http.post("https://localhost:7153/api/novu/send-welcome-email",this.EmailObj).subscribe((res:any)=>{
+      console.log(res)
+    })
+  }
  })
   }
 }
