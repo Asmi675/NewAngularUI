@@ -47,5 +47,14 @@ export class BookingStatusComponent implements OnInit {
   this.uniqueProfessionalNames = Array.from(professionalNamesSet);
   console.log(this.uniqueProfessionalNames)
  }
+ Submit(){
+
+ }
+ Review(){
+
+ }
+ Delete(){
+
+ }
   
 }
