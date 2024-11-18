@@ -57,12 +57,12 @@ export const routes: Routes =
             path: "professionals", component: ProfHomePageComponent,canActivate:[authGuard],
             children:
                 [
-                    { path: "", redirectTo: "profstatus", pathMatch: 'full'},
+                    { path: "", redirectTo: "profdashboard", pathMatch: 'full'},
                     {
                         path: "profprofile", component: ProfProfilePageComponent
                     },
                     {
-                        path: "profstatus", component: RequestPageComponent
+                        path: "profdashboard", component: RequestPageComponent
                     },
                     {
                         path: "profsummary", component: ProfSummaryComponent
