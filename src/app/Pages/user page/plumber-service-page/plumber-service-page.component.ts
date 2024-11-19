@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterLink, RouterOutlet} from '@angular/router';
+import { NotificationService } from '../../../Service/notification-service.service';
 
 @Component({
   selector: 'app-plumber-service-page',
@@ -60,7 +61,7 @@ export class PlumberServicePageComponent implements OnInit{
 http = inject(HttpClient)
 data:any[] = []
 domain:string="Plumber"
-  constructor() { }
+  constructor(private notificationService:NotificationService) { }
 
   ngOnInit(): void {
     // Fetch services from backend (C# API)
@@ -126,7 +127,7 @@ EmailObj:any={
     }
     
     console.log(this.EmailObj)
-    this.http.post("http://localhost:5007/api/novu/send-welcome-email",this.EmailObj).subscribe((res:any)=>{
+    this.notificationService.SendNotification(this.EmailObj).subscribe((res:any)=>{
       console.log(res)
     })
   }
