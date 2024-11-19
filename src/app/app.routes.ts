@@ -20,7 +20,6 @@ import { BookingStatusComponent } from './Pages/user page/booking-status/booking
 import { RequestPageComponent } from './Pages/Professionals/request-page/request-page.component';
 import { ProfDetailsComponent } from './Pages/Admin/prof-details/prof-details.component';
 import { authGuard } from './guards/auth.guard';
-import { OtherServicesComponent } from './Pages/user page/other-services/other-services.component';
 
 export const routes: Routes =
     [
@@ -32,7 +31,6 @@ export const routes: Routes =
         { path: "electrician", component: ElectricianServicePageComponent },
         { path: "profile", component: UserProfilePageComponent },
         { path: "status" , component: BookingStatusComponent },
-        { path: "other", component:OtherServicesComponent},
 
         {
             path: "admin", component: AdminHomePageComponent,canActivate:[authGuard],
