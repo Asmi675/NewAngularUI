@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { APIService } from '../../../Service/user.service';
+import { UserApiService } from '../../../Service/user.service';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './admin-list-professional-details.component.css'
 })
 export class AdminListProfessionalDetailsComponent implements OnInit {
-  APIService = inject(APIService);
+  APIService = inject(UserApiService);
   ProfessionalList:any[]=[];
   isShowed:boolean=false
   ngOnInit(): void {

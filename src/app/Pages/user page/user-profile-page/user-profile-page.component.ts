@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterLink, RouterOutlet} from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { UserApiService } from '../../../Service/user.service';
 
 
 @Component({
@@ -20,19 +22,20 @@ export class UserProfilePageComponent implements OnInit {
     this.getDetails(this.userName)
     console.log(this.userName)
   }
+  constructor(private toastr:ToastrService,private userApiService:UserApiService){}
   
-  updateObj: any = {
-    // "id": 0,
-    // "name": "",
-    "email": "",
-    "phone": "",
-    "gender": "",
-    "address": "",
-    "dob": "",
-    "profilePic": "",
-    // "userName": "",
-    "city": ""
-  }
+  // updateObj: any = {
+  //   "id: 0,
+  // "name": "string",
+  // "email": "string",
+  // "phone": "string",
+  // "gender": "string",
+  // "address": "string",
+  // "dob": "2024-11-19",
+  // "profilePic": "string",
+  // "userName": "string",
+  // "city": "string"
+  // }
   UserObj: any = {
     id: 0,
     name: "",
@@ -51,7 +54,7 @@ export class UserProfilePageComponent implements OnInit {
   http = inject(HttpClient)
 
   getDetails(name: string) {
-    this.http.get("https://localhost:5002/api/UserApi/ByUserName/" +name ).subscribe((res: any) => {
+    this.userApiService.getUserByUserName(name).subscribe((res: any) => {
       console.log(res)
       if(res.isSuccessful){
         this.UserObj=res.result
@@ -61,21 +64,12 @@ export class UserProfilePageComponent implements OnInit {
   }
 
   onSubmit() {
-    this.updateObj = Object.keys(this.updateObj).reduce((updated, key) => {
-      if (key in this.UserObj) {
-        updated[key] = this.UserObj[key as keyof typeof this.UserObj];
-      }
-      return updated;
-    }, { ...this.updateObj }); // Initialize with current updateObj values
-  
-    console.log(this.updateObj);
-
-    this.http.put("https://localhost:5002/api/UserApi"+this.UserObj.id,this.updateObj).subscribe((res:any)=>{
-      console.log(res)
-      if (res.isSuccessful) {
-        this.UserObj=res.result
-      }
-    })
+  this.userApiService.putUser(this.UserObj).subscribe((res:any)=>{
+    console.log(res)
+    if (res.isSuccessful) {
+      this.toastr.success("Successfully updated details")
+    }
+  })
   }
   onLogOut(){
     localStorage.clear()

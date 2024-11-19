@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { APIService } from '../../../Service/user.service';
+import {UserApiService } from '../../../Service/user.service';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './admin-list-user-details.component.css'
 })
 export class AdminListUserDetailsComponent implements OnInit {
-  APIService = inject(APIService);
+  APIService = inject(UserApiService);
   UserList:any[]=[];
   ngOnInit(): void {
     this.loadProfessionals();
@@ -32,7 +32,7 @@ DeleteDetail: any = {
 }
 http = inject(HttpClient)
   onDelete(id:any) {
-    this.http.delete("https://localhost:5002/api/UserApi/" + id).subscribe((res: any) => {
+    this.APIService.deleteUser(id).subscribe((res: any) => {
       
       alert("User record successfully Deleted!");
       window.location.reload()

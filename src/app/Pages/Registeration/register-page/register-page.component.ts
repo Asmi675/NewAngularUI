@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { ToastrService } from 'ngx-toastr';
 import { timer } from 'rxjs';
+import { UserApiService } from '../../../Service/user.service';
 
 @Component({
   selector: 'app-register-page',
@@ -25,7 +26,7 @@ export class RegisterPageComponent {
     console.log('reCAPTCHA response:', response);  // You can log the response if needed
   }
 
-  constructor(private toastr:ToastrService){
+  constructor(private toastr:ToastrService,private userApiService:UserApiService){
 localStorage.setItem('userName',"EmptyUser")
   }
 registerObj:any={
@@ -97,7 +98,7 @@ onRegister(){
       console.log(res)
       if(res.isSuccessful){
         if (this.registerObj.role=='user') {
-          this.http.post("https://localhost:5002/api/UserApi",this.registerObj).subscribe((user:any)=>{
+          this.userApiService.postUser(this.registerObj).subscribe((user:any)=>{
             console.log(user)
             if (user.result) {
               // alert("Successfully registered User")

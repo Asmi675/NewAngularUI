@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { Toast, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-prof-profile-page',
@@ -11,6 +12,8 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   styleUrl: './prof-profile-page.component.css'
 })
 export class ProfProfilePageComponent implements OnInit {
+constructor(private toastr:ToastrService){}
+
 userName:any = ""
 isAvailable:boolean=true
   ngOnInit(): void {
@@ -84,6 +87,7 @@ isAvailable:boolean=true
       console.log(res)
       if (res.isSuccessful) {
         this.providerObj=res.result
+        this.toastr.success("Successfully Updated Details")
       }
     })
   }
