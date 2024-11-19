@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { APIService } from '../../../Service/user.service';
+import {UserApiService } from '../../../Service/user.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -18,7 +18,7 @@ export class ProfDetailsComponent implements OnInit {
    this.totalElectricianBooking()
    this.totalPlumberBooking()
   }
-  APIServices = inject(APIService)
+  APIServices = inject(UserApiService)
 http = inject(HttpClient)
 ProfessionalList:any
 confirmRes:any={
