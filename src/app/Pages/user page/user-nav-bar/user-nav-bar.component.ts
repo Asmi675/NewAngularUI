@@ -9,7 +9,7 @@ import { TutorServicePageComponent } from '../tutor-service-page/tutor-service-p
 @Component({
   selector: 'app-user-nav-bar',
   standalone: true,
-  imports: [RouterLink, RouterOutlet, UserHomePageComponent ,UserProfilePageComponent,ElectricianServicePageComponent,PlumberServicePageComponent,TutorServicePageComponent],
+  imports: [],
   templateUrl: './user-nav-bar.component.html',
   styleUrl: './user-nav-bar.component.css'
 })

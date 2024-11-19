@@ -7,7 +7,6 @@ import { PlumberServicePageComponent } from './Pages/user page/plumber-service-p
 import { ElectricianServicePageComponent } from './Pages/user page/electrician-service-page/electrician-service-page.component';
 import { AdminHomePageComponent } from './Pages/Admin/admin-home-page/admin-home-page.component';
 import { RegLoginPageComponent } from './Pages/Registeration/reg-login-page/reg-login-page.component';
-import { UserNavBarComponent } from './Pages/user page/user-nav-bar/user-nav-bar.component';
 import { AdminListUserDetailsComponent } from './Pages/Admin/admin-list-user-details/admin-list-user-details.component';
 import { AdminListProfessionalDetailsComponent } from './Pages/Admin/admin-list-professional-details/admin-list-professional-details.component';
 import { AdmiSummaryComponent } from './Pages/Admin/admi-summary/admi-summary.component';
@@ -26,13 +25,12 @@ export const routes: Routes =
     [
         { path: "", redirectTo: "register", pathMatch: 'full' },
         { path: "register", component: RegisterPageComponent },
-        { path: "nav", component: UserNavBarComponent },
         { path: 'user', component: UserHomePageComponent,canActivate:[authGuard] },
         { path: "tutor", component: TutorServicePageComponent },
         { path: "plumber", component: PlumberServicePageComponent },
         { path: "electrician", component: ElectricianServicePageComponent },
         { path: "profile", component: UserProfilePageComponent },
-        { path : "status" , component: BookingStatusComponent },
+        { path: "status" , component: BookingStatusComponent },
 
         {
             path: "admin", component: AdminHomePageComponent,canActivate:[authGuard],
