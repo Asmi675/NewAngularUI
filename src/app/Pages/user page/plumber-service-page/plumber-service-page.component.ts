@@ -118,9 +118,15 @@ EmailObj:any={
   if(res.isSuccessful){
     this.EmailObj.phone=item.phone
     this.EmailObj.email=item.email
-    this.EmailObj.id="668920e8e86831190cc77f0e"
+    if (item.email==="danielmodex33@gmail.com") {
+      this.EmailObj.id="668920e8e86831190cc77f0e"
+    }
+    else{
+      this.EmailObj.id=item.userName
+    }
+    
     console.log(this.EmailObj)
-    this.http.post("https://localhost:7153/api/novu/send-welcome-email",this.EmailObj).subscribe((res:any)=>{
+    this.http.post("http://localhost:5007/api/novu/send-welcome-email",this.EmailObj).subscribe((res:any)=>{
       console.log(res)
     })
   }
