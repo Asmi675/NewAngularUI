@@ -105,3 +105,10 @@ button:hover{
 #chk:checked ~ .signup label{
 	transform: scale(.6);
 }
+
+
+.captcha-box {
+	display: flex;
+	justify-content: center;
+	margin: 0px auto 0;
+}
