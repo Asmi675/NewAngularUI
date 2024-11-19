@@ -7,6 +7,7 @@ import { RecaptchaModule } from 'ng-recaptcha';
 import { ToastrService } from 'ngx-toastr';
 import { timer } from 'rxjs';
 import { UserApiService } from '../../../Service/user.service';
+import { NotificationService } from '../../../Service/notification-service.service';
 
 @Component({
   selector: 'app-register-page',
@@ -26,7 +27,7 @@ export class RegisterPageComponent {
     console.log('reCAPTCHA response:', response);  // You can log the response if needed
   }
 
-  constructor(private toastr:ToastrService,private userApiService:UserApiService){
+  constructor(private toastr:ToastrService,private userApiService:UserApiService,private notificationService:NotificationService){
 localStorage.setItem('userName',"EmptyUser")
   }
 registerObj:any={
@@ -63,7 +64,7 @@ this.OTPObj.email = this.registerObj.email
 this.OTPObj.phone = this.registerObj.phone
 this.OTPObj.otp = this.OTP
 console.log(this.OTPObj)
-this.http.post("http://localhost:5007/api/novu/send-otp",this.OTPObj).subscribe((res:any)=>{
+this.notificationService.sendOtp(this.OTPObj).subscribe((res:any)=>{
   console.log(res)
 })
 
