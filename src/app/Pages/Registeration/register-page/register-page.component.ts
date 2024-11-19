@@ -62,7 +62,7 @@ this.OTPObj.email = this.registerObj.email
 this.OTPObj.phone = this.registerObj.phone
 this.OTPObj.otp = this.OTP
 console.log(this.OTPObj)
-this.http.post("https://localhost:7153/api/novu/send-otp",this.OTPObj).subscribe((res:any)=>{
+this.http.post("http://localhost:5007/api/novu/send-otp",this.OTPObj).subscribe((res:any)=>{
   console.log(res)
 })
 
