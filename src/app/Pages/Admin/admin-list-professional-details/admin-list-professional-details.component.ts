@@ -1,17 +1,19 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { UserApiService } from '../../../Service/user.service';
 import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-admin-list-professional-details',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './admin-list-professional-details.component.html',
   styleUrl: './admin-list-professional-details.component.css'
 })
 export class AdminListProfessionalDetailsComponent implements OnInit {
   APIService = inject(UserApiService);
   ProfessionalList:any[]=[];
+  isShowed:boolean=false
   ngOnInit(): void {
     this.loadProfessionals();
   }
@@ -37,8 +39,16 @@ http = inject(HttpClient)
       window.location.reload()
     })
   }
-
+ProfDetails:any=[]
   onDetails(value:any){
-localStorage.setItem('profId',value)
+    this.isShowed=true
+this.http.get("https://localhost:7057/api/Services/GetProfessional/"+value).subscribe((res:any)=>{
+  console.log(res)
+  this.ProfDetails=res.result
+})
+  }
+
+  close(){
+    this.isShowed=false
   }
 }
