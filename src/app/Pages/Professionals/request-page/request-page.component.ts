@@ -65,6 +65,20 @@ BookingRequests:any
       
     })
   }
+
+Delete(id:any){
+  this.responseObj.bookingId=id
+  this.responseObj.responseValue=true
+this.http.put("https://localhost:7025/api/booking/CancelBooking",this.responseObj).subscribe((res:any)=>{
+  console.log(res)
+  if(res.isSuccessful){
+    setTimeout(() => {
+      window.location.reload()
+    }, 5000);
+  }
+})
+}
+
   bookingCount:any
   showCount(){
     this.http.get("https://localhost:7025/api/Summary/ProfessionalSummary/"+this.userName).subscribe((res:any)=>{

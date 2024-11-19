@@ -79,7 +79,7 @@
       <!-- Loop through the services array to create cards dynamically -->
 
       @for (item of data; track $index) {
-        @if (item.isAvailable) {
+        @if (item.isAvailable && item.isConfirmed) {
           <div class="col-md-6 mb-4 custom1">
             <div class="card h-100">
                 <img src="plumber img_2.jpg" class="card-img-top" alt="" />
