@@ -1,6 +1,6 @@
 import { CommonModule, DatePipe } from '@angular/common';
 import { HttpBackend, HttpClient } from '@angular/common/http';
-import { Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet} from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -15,7 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class BookingStatusComponent implements OnInit {
 
-  constructor(private toastr:ToastrService){
+  constructor(private toastr:ToastrService,private cdr:ChangeDetectorRef){
 
   }
 
@@ -41,6 +41,8 @@ isVisible:boolean=false
         this.BookingDetails = res.result
         console.log(this.BookingDetails)
         this.extractUniqueNames(this.BookingDetails)
+        this.BookingDetails = [...this.BookingDetails].reverse();
+        this.cdr.detectChanges()
       }
     })
   }
@@ -83,8 +85,24 @@ this.isVisible=true
 this.reviewObj.professionalName=name
 
  }
- Delete(){
 
+ responseObj:any={
+  responseId: 0,
+  bookingId: 0,
+  responseValue: false,
+  responseMessage: ""
+ }
+ Delete(id:any){
+  this.responseObj.bookingId=id
+  this.responseObj.responseValue=true
+this.http.put("https://localhost:7025/api/booking/CancelBooking",this.responseObj).subscribe((res:any)=>{
+  console.log(res)
+  if(res.isSuccessful){
+    setTimeout(() => {
+      window.location.reload()
+    }, 5000);
+  }
+})
  }
   
 }
