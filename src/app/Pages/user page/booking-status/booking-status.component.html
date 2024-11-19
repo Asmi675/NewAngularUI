@@ -21,7 +21,7 @@
           
           <!-- Services Dropdown in Navbar -->
           <li ngbDropdown class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" ngbDropdownToggle aria-expanded="false">
+            <a class="nav-link dropdown-toggle"routerLink="/profile"  id="navbarDropdown" ngbDropdownToggle aria-expanded="false">
               Services
             </a>
             <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -89,18 +89,16 @@
       </div>
   
       <!-- Right Section -->
-      <div class="right-section">
-        <div class="previous-booking-card" [ngStyle]="{ 'display': isVisible ? 'block' : 'none' }">
+      <div *ngIf="isVisible" class="right-section">
+        <div class="previous-booking-card">
           <h3>Review Box</h3>
-          <h6>Professional Name :{{reviewObj.professionalName}}</h6>
+          <h6>Professional Name: {{reviewObj.professionalName}}</h6>
           <p><strong>Review: </strong></p>
-            <p><label for="">Rating:</label><input type="number" class="sample" [(ngModel)]="reviewObj.userRating"></p>
-          <p><label for="">Message:</label><input type="text" class="sample" [(ngModel)]="reviewmessage"></p>
-          <!-- <p><strong>Review:</strong> Excellent service, very professional!</p> -->
-          <!-- <p><strong>Rating:</strong> 5/5</p> -->
+          <p><label for="">Rating:</label><input type="number" class="sample" [(ngModel)]="reviewObj.userRating"></p>
+          <p><label for="">Message:</label><input type="text" class="sample" [(ngModel)]="reviewMessage"></p>
           <button type="submit" class="btn btn-success btn-block custom2" (click)="Submit()">Submit</button>
         </div>
       </div>
-    </div>
+      
 
 <router-outlet></router-outlet>
