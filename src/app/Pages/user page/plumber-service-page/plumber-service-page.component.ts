@@ -92,6 +92,7 @@ domain:string="Plumber"
       console.log(res.result)
       if(res) {
         this.data=res.result
+        this.data.sort((a: any, b: any) => b.rating - a.rating)
       }
     })
   }
