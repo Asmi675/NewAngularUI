@@ -15,7 +15,7 @@
       <div class="button-container">
         <button type="submit" class="btn btn-danger btn-block custom4" (click)="Delete(item.id)">Cancel</button>
 
-        <button type="submit" class="btn btn-info btn-block custom1" (click)="Confirm(item.id)">Confirm Request</button>
+        <button type="submit" class="btn btn-info btn-block custom1" [ngStyle]="{ display: item.serviceProviderResponse? 'none' : 'block' }" (click)="Confirm(item.id)">Confirm Request</button>
         <button type="submit" class="btn btn-success btn-block custom2" [ngStyle]="{ display: item.serviceProviderResponse? 'block' : 'none' }" (click)="payment(item.id)">Confirm Payment</button>
       </div>
 
