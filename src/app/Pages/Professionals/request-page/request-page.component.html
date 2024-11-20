@@ -9,7 +9,7 @@
       <img src="face.png" alt="Profile Picture" class="profile-pic">
       <p><strong>Name:</strong> {{item.userName}}</p>
       <p><strong>Service Requested:</strong> {{item.serviceProvided}} </p>
-      <p><strong>Created At:</strong> {{item.createdAt}} </p>
+      <p><strong>Created At:</strong> {{item.createdAt | date}} </p>
       <p><strong>Base Pay:</strong> {{item.price}} /hour</p>
       <p><strong>Booking Status:</strong> {{item.bookingStatus}} </p>
       <div class="button-container">
