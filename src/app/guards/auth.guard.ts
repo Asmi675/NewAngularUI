@@ -9,7 +9,7 @@ export const authGuard: CanActivateFn = (route, state) => {
   const userRole = localStorage.getItem('role');
   const requestedUrl = route.url.join('/');
 
-  if (!user) {
+  if (!user || user==='EmptyUser') {
     router.navigateByUrl('register')
     return false
   }
