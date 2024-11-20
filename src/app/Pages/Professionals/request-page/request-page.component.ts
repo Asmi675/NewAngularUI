@@ -66,6 +66,24 @@ BookingRequests:any
     })
   }
 
+  payment(id:any){
+    this.responseObj.bookingId=id
+    console.log(this.responseObj.bookingId)
+    this.responseObj.responseValue=true
+    this.http.put("https://localhost:7025/api/booking/PaymentResponse",this.responseObj).subscribe((res:any)=>{
+      console.log(res)
+      if (res.isSuccessful) {
+        this.toastr.success("Confirmation Successfull")
+        setTimeout(() => {
+          this.BookingRequests = [];  // Clear previous bookings
+          this.getAllBookings();      // Refetch the bookings
+        }, 5000);
+        
+      }
+      
+    })
+  }
+
 Delete(id:any){
   this.responseObj.bookingId=id
   this.responseObj.responseValue=true

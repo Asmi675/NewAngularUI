@@ -4,7 +4,7 @@
     <div class="left-section">
       <h2>User Details</h2>
       @for (item of BookingRequests; track $index) {
-        @if (!item.cancelationConfirmed) {
+        @if (!item.cancelationConfirmed && !item.isCompleted) {
           <div class="profile-card" style="height: 16%" [ngStyle]="{'background-color':item.serviceProviderResponse ? '#ecfbe5':'#fbe5e5'}" >
             <img src="face.png" alt="Profile Picture" class="profile-pic">
             <p><strong>Name:</strong> {{item.userName}}</p>
@@ -14,7 +14,9 @@
             <p><strong>Booking Status:</strong> {{item.bookingStatus}} </p>
             <button type="submit" class="btn btn-danger btn-block custom4" (click)="Delete(item.id)">Cancel</button>
   
-            <button type="submit" class="btn btn-info btn-block custom1" (click)="Confirm(item.id)">Confirm</button>
+            <button type="submit" class="btn btn-info btn-block custom1" (click)="Confirm(item.id)">Confirm Request</button>
+            <button type="submit" class="btn btn-info btn-block custom1" (click)="payment(item.id)">Confirm Payment</button>
+
   
           </div>
           <br>
