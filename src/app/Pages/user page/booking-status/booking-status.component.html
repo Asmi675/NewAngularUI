@@ -152,7 +152,7 @@
 
       <button
         type="submit"
-        class="btn btn-danger btn-block custom4"
+        class="btn btn-danger btn-block custom4" [ngStyle]="{ display: item.isCompleted? 'block' : 'none' }"
         (click)="Delete(item.id)"
       >
         Cancel
