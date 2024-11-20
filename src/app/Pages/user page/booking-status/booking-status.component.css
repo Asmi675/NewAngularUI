@@ -74,12 +74,12 @@ strong {
 }
 
 
+
 .custom2{
   margin-left: 50%;
 }
-.custom3{
-
-  margin-right: 40%;
+.custom3 {
+  margin: 0; /* Reset margins */
 }
 .nav-link {
   cursor: pointer; /* Ensures proper cursor for links */
@@ -130,3 +130,7 @@ cursor: pointer !important; /* Hand cursor for clickable link */
 .nav-item.dropdown .nav-link:hover {
 cursor: pointer !important; /* Hand cursor for clickable link */
 }
+
+
+
+
