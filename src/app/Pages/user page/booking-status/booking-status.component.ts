@@ -49,10 +49,11 @@ export class BookingStatusComponent implements OnInit {
   }
 
   isVisible: boolean = false
+  uniqueProfessionalNames: any = []
 
   BookingDetails: any = []
 
-  uniqueProfessionalNames: any = []
+ 
 
   getBookingDetails(userName: string) {
 
@@ -181,7 +182,7 @@ export class BookingStatusComponent implements OnInit {
 
           window.location.reload()
 
-        }, 5000);
+        }, 1000);
 
       }
 

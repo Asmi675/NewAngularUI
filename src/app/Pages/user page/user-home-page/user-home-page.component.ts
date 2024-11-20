@@ -20,6 +20,8 @@ export class UserHomePageComponent implements OnInit  {
     this.ProfileName = localStorage.getItem('userName')
   }
 
+  
+
   onLogOut(){
     localStorage.clear()
   }
