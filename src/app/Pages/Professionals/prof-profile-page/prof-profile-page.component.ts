@@ -79,7 +79,7 @@ isAvailable:boolean=true
         updated[key] = this.providerObj[key as keyof typeof this.providerObj];
       }
       return updated;
-    }, { ...this.updateObj }); // Initialize with current updateObj values
+    }, { ...this.updateObj }); 
   
     console.log(this.updateObj);
 

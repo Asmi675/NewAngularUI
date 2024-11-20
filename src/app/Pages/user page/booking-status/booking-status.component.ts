@@ -96,8 +96,11 @@ export class BookingStatusComponent implements OnInit {
   }
 
   Submit() {
-
-    this.reviewObj.userName = this.ProfileName
+    if(this.reviewObj.userRating>5 || this.reviewObj.userRating<0){
+      this.toastr.error("enter a rating between 1 to 5")
+    }
+    else{
+      this.reviewObj.userName = this.ProfileName
 
     this.reviewObj.message = this.reviewmessage
 
@@ -110,11 +113,32 @@ export class BookingStatusComponent implements OnInit {
       if (res.isSuccessful) {
 
         this.toastr.success("review successfully submitted")
+        this.fetchUpdatedReviews();
+
+        // Reset the review form
+        this.reviewmessage = '';
+        this.reviewObj.userRating = 0;
 
       }
 
     })
+    }
 
+    
+
+  }
+
+  fetchUpdatedReviews() {
+    this.http.get("https://localhost:7057/api/User/Reviews/GetReviewsByName?username=" + this.reviewObj.professionalName)
+      .subscribe((res: any) => {
+        console.log(res);
+  
+        if (res.isSuccessful) {
+          this.pastReviews = res.result.reverse(); // Update with the latest reviews
+          console.log(this.pastReviews);
+          this.cdr.detectChanges();
+        }
+      });
   }
 
   reviewObj: any = {
@@ -137,10 +161,13 @@ export class BookingStatusComponent implements OnInit {
   pastReviews:any
 
   Review(name: string) {
-    this.reviewObj.professionalName = name
+   
+   
+      this.reviewObj.professionalName = name
       this.http.get("https://localhost:7057/api/User/Reviews/GetReviewsByName?username="+name).subscribe((res:any)=>{
         console.log(res)
       this.pastReviews=res.result
+      this.pastReviews=this.pastReviews.reverse()
       console.log(this.pastReviews)
       this.cdr.detectChanges()
       })
@@ -150,6 +177,8 @@ export class BookingStatusComponent implements OnInit {
 
       
     }, 1000);
+    
+    
    
 
   }
@@ -177,6 +206,7 @@ export class BookingStatusComponent implements OnInit {
       console.log(res)
 
       if (res.isSuccessful) {
+        this.toastr.success("Cancellation Successfull")
 
         setTimeout(() => {
 

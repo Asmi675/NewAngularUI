@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import {UserApiService } from '../../../Service/user.service';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin-list-user-details',
@@ -16,6 +17,7 @@ export class AdminListUserDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.loadProfessionals();
   }
+  constructor(private toastr:ToastrService){}
   loadProfessionals(){
     this.APIService.getUsers().subscribe((res:any) =>{
       console.log(res.result)
@@ -34,7 +36,7 @@ http = inject(HttpClient)
   onDelete(id:any) {
     this.APIService.deleteUser(id).subscribe((res: any) => {
       
-      alert("User record successfully Deleted!");
+      this.toastr.success("User record successfully Deleted!");
       window.location.reload()
     })
   }

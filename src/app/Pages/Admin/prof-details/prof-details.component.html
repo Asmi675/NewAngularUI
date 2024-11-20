@@ -15,8 +15,8 @@
                   <p><strong>Gender:</strong> {{item.gender}}</p>
                   <p><strong>Rating:</strong> {{item.rating}}</p>
                   <label class="labels">New Rating</label>
-                  <input [(ngModel)]="confirmRes.rating" type="text" class="form-control" placeholder="Enter New Rating" value="0">
-                  <button type="submit" class="btn btn-danger btn-block" (click)="confirm(item.id)">Confirm</button>
+                  <input [(ngModel)]="item.rating" type="text" class="form-control" placeholder="Enter New Rating" value="0">
+                  <button type="submit" class="btn btn-danger btn-block" (click)="confirm(item)">Confirm</button>
               </div>
           }
           <br>

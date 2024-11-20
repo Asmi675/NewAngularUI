@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { UserApiService } from '../../../Service/user.service';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin-list-professional-details',
@@ -14,6 +15,7 @@ export class AdminListProfessionalDetailsComponent implements OnInit {
   APIService = inject(UserApiService);
   ProfessionalList:any[]=[];
   isShowed:boolean=false
+  constructor(private toastr:ToastrService){}
   ngOnInit(): void {
     this.loadProfessionals();
   }
@@ -35,11 +37,12 @@ http = inject(HttpClient)
   onDelete(id:any) {
     this.http.delete("https://localhost:7057/api/Services/" + id).subscribe((res: any) => {
       
-      alert("Professional record successfully Deleted!");
+      this.toastr.success("Professional record successfully Deleted!");
       window.location.reload()
     })
   }
 ProfDetails:any=[]
+
   onDetails(value:any){
     this.isShowed=true
 this.http.get("https://localhost:7057/api/Services/GetProfessional/"+value).subscribe((res:any)=>{
