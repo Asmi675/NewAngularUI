@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterLink, RouterOutlet} from '@angular/router';
 import { NotificationService } from '../../../Service/notification-service.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-plumber-service-page',
@@ -61,7 +62,7 @@ export class PlumberServicePageComponent implements OnInit{
 http = inject(HttpClient)
 data:any[] = []
 domain:string="Plumber"
-  constructor(private notificationService:NotificationService) { }
+  constructor(private notificationService:NotificationService, private toastr:ToastrService) { }
 
   ngOnInit(): void {
     // Fetch services from backend (C# API)
@@ -118,6 +119,7 @@ EmailObj:any={
  this.http.post("https://localhost:7025/api/booking",this.BookingDetails).subscribe((res:any)=>{
   console.log(res)
   if(res.isSuccessful){
+    this.toastr.success("Successfully Booked the Service")
     this.EmailObj.phone=item.phone
     this.EmailObj.email=item.email
     if (item.email==="danielmodex33@gmail.com") {
@@ -131,6 +133,7 @@ EmailObj:any={
     this.notificationService.SendNotification(this.EmailObj).subscribe((res:any)=>{
       console.log(res)
     })
+    
   }
  })
   }
