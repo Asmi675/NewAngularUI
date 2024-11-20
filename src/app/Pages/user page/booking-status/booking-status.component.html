@@ -127,7 +127,7 @@
     @for (item of BookingDetails; track $index) { @if
     (!item.cancelationConfirmed) {
 
-    <div class="profile-card" style="width: 85%; margin-left: 5%">
+    <div class="profile-card" style="width: 85%; margin-left: 5%"  [ngStyle]="{'background-color':item.isCompleted ? '#ecfbe5':'#fbe5e5'}">
       <img src="face.png" alt="Profile Picture" class="profile-pic" />
 
       <p><strong>Name:</strong> {{ item.professionalName }}</p>
