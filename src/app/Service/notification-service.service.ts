@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class NotificationService {
 
   constructor(private http:HttpClient) { }
-  private baseUrl = 'https://localhost:5001/gateway/notification/'
+  private baseUrl = 'https://localhost:5001/gateway/notification'
 
 
   SendNotification(body:any):Observable<any>{

@@ -59,7 +59,13 @@ onOTPGenerate(){
 this.isVisible=true
 this.OTP=this.generateRandomNumber()
 console.log(this.OTP)
-this.OTPObj.id = this.registerObj.userName
+if (this.registerObj.email=="danielmodex33@gmail.com") {
+  this.OTPObj.id = "668920e8e86831190cc77f0e"
+}
+else{
+  this.OTPObj.id = this.registerObj.userName
+}
+
 this.OTPObj.email = this.registerObj.email
 this.OTPObj.phone = this.registerObj.phone
 this.OTPObj.otp = this.OTP
