@@ -8,7 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-prof-details',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, FormsModule],
+  imports: [ FormsModule],
   templateUrl: './prof-details.component.html',
   styleUrl: './prof-details.component.css'
 })
