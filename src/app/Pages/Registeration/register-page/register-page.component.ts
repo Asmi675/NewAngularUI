@@ -72,6 +72,11 @@ export class RegisterPageComponent {
     console.log(this.OTPObj)
     this.notificationService.sendOtp(this.OTPObj).subscribe((res: any) => {
       console.log(res)
+      if (res.isSuccessful) {
+        this.toastr.success("OTP Sent")
+        // this.OTP=res.message
+        console.log(this.OTP)
+      }
     })
 
   }
